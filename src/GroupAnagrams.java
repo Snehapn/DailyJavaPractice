@@ -12,32 +12,30 @@ public class GroupAnagrams {
 
 	public static void groupAnagrams(String arr[]) {
 		Map<String, List<String>> hmap = new HashMap<>();
-		for (int i = 0; i < arr.length; i++) {
 
+		for (int i = 0; i < arr.length; i++) {
 			String word = arr[i];
-			char[] arrayChar = word.toCharArray();
-			Arrays.sort(arrayChar);
-			String newWord = new String(arrayChar);
+			char[] wordToChar = word.toCharArray();
+			Arrays.sort(wordToChar);
+			String newWord = new String(wordToChar);
 
 			if (hmap.containsKey(newWord)) {
 				hmap.get(newWord).add(word);
 			} else {
-				List<String> words = new ArrayList<>();
-				words.add(newWord);
-				hmap.put(newWord, words);
+				List<String> al = new ArrayList<>();
+				al.add(word);
+				hmap.put(newWord, al);
 			}
 		}
-		
-		for(String s: hmap.keySet()) {
-			List <String> values = hmap.get(s);
-			
-			if(values.size()>1) {
+
+		for (String s : hmap.keySet()) {
+			List<String> values = hmap.get(s);
+
+			if (values.size() > 1) {
 				System.out.println(values);
 			}
-		}
-		
-		
 
+		}
 	}
 
 }
